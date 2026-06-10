@@ -3,108 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Ride Fare Prediction</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-        }
-
-        header {
-            background: #0d6efd;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .container {
-            padding: 30px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        h1, h2 {
-            margin: 0 0 10px;
-        }
-
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            background: #0d6efd;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0b5ed7;
-        }
-
-        .result {
-            margin-top: 15px;
-            font-weight: bold;
-            color: green;
-        }
-    </style>
+    <title>Smart Ride Fare Prediction System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-    <h1>🚖 Smart Ride Fare Prediction</h1>
-    <p>Estimate your ride cost instantly</p>
-</header>
-
 <div class="container">
-    <div class="card">
 
-        <h2>Enter Ride Details</h2>
+    <h1>🚖 Smart Ride Fare Prediction System</h1>
 
-        <label>Distance (km)</label>
-        <input type="number" id="distance" placeholder="Enter distance">
+    <p class="subtitle">
+        Compare estimated fares based on distance, traffic and peak hours
+    </p>
 
-        <label>Time (minutes)</label>
-        <input type="number" id="time" placeholder="Enter time">
+    <input type="text" id="pickup" placeholder="📍 Pickup Location">
 
-        <button onclick="predictFare()">Predict Fare</button>
+    <input type="text" id="destination" placeholder="🏁 Destination">
 
-        <div class="result" id="result"></div>
+    <input type="number" id="distance" placeholder="📏 Distance (km)">
 
+    <select id="vehicle">
+        <option value="bike">🏍️ Bike</option>
+        <option value="auto">🛺 Auto</option>
+        <option value="cab">🚕 Cab</option>
+    </select>
+
+    <select id="traffic">
+        <option value="low">🟢 Low Traffic</option>
+        <option value="medium">🟡 Medium Traffic</option>
+        <option value="high">🔴 High Traffic</option>
+    </select>
+
+    <div class="peak-container">
+        <label>
+            <input type="checkbox" id="peak">
+            ⏰ Peak Hour
+        </label>
     </div>
+
+    <button onclick="compareFare()">
+        Compare Price
+    </button>
+
+    <h3 id="time"></h3>
+
+    <h2 id="result"></h2>
+
+    <div id="fareCards"></div>
+
+    <div id="summary"></div>
+
+    <div class="map-box">
+        <h3>🗺️ Route Information</h3>
+        <p>
+            Enter pickup and destination to estimate ride details.
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>⭐ Customer Feedback</h2>
+
+    <textarea
+        id="feedback"
+        rows="4"
+        placeholder="Enter your feedback">
+    </textarea>
+
+    <button onclick="submitFeedback()">
+        Submit Feedback
+    </button>
+
+    <p id="feedbackMsg"></p>
+
 </div>
 
-<script>
-    function predictFare() {
-        let distance = document.getElementById("distance").value;
-        let time = document.getElementById("time").value;
-
-        if (distance === "" || time === "") {
-            document.getElementById("result").innerText = "Please enter all fields";
-            return;
-        }
-
-        // Simple formula (you can replace with ML later)
-        let fare = (distance * 10) + (time * 2);
-
-        document.getElementById("result").innerText =
-            "Estimated Fare: ₹ " + fare.toFixed(2);
-    }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
