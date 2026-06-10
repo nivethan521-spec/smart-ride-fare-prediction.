@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Ride Fare Prediction System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚖 Smart Ride Fare Prediction System</h1>
+
+    <p class="subtitle">
+        Compare estimated fares based on distance, traffic and peak hours
+    </p>
+
+    <input type="text" id="pickup" placeholder="📍 Pickup Location">
+
+    <input type="text" id="destination" placeholder="🏁 Destination">
+
+    <input type="number" id="distance" placeholder="📏 Distance (km)">
+
+    <select id="vehicle">
+        <option value="bike">🏍️ Bike</option>
+        <option value="auto">🛺 Auto</option>
+        <option value="cab">🚕 Cab</option>
+    </select>
+
+    <select id="traffic">
+        <option value="low">🟢 Low Traffic</option>
+        <option value="medium">🟡 Medium Traffic</option>
+        <option value="high">🔴 High Traffic</option>
+    </select>
+
+    <div class="peak-container">
+        <label>
+            <input type="checkbox" id="peak">
+            ⏰ Peak Hour
+        </label>
+    </div>
+
+    <button onclick="compareFare()">
+        Compare Price
+    </button>
+
+    <h3 id="time"></h3>
+
+    <h2 id="result"></h2>
+
+    <div id="fareCards"></div>
+
+    <div id="summary"></div>
+
+    <div class="map-box">
+        <h3>🗺️ Route Information</h3>
+        <p>
+            Enter pickup and destination to estimate ride details.
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>⭐ Customer Feedback</h2>
+
+    <textarea
+        id="feedback"
+        rows="4"
+        placeholder="Enter your feedback">
+    </textarea>
+
+    <button onclick="submitFeedback()">
+        Submit Feedback
+    </button>
+
+    <p id="feedbackMsg"></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
